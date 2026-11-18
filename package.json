@@ -37,7 +37,16 @@
     }
   ]
 },
-    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "shortcutName": "orbi", "deleteAppDataOnUninstall": false },
+
+"nsis": {
+  "oneClick": false,
+  "allowToChangeInstallationDirectory": true,
+  "createDesktopShortcut": true,
+  "shortcutName": "orbi",
+  "deleteAppDataOnUninstall": false,
+  "installerIcon": "assets/icon.ico",
+  "uninstallerIcon": "assets/icon.ico",
+  "installerHeaderIcon": "assets/icon.ico"},
     "publish": [{ "provider": "github", "owner": "kley76", "repo": "orbi-desktop", "releaseType": "release" }]
   }
 }
