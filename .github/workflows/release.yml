@@ -5,7 +5,6 @@ on:
   push:
     tags:
       - 'v*'
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,18 +14,33 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Baixar codigo
+      - name: Baixar projeto
         uses: actions/checkout@v4
 
-      - name: Instalar Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
 
       - name: Instalar dependencias
-        run: npm install
+        run: npm install --no-audit --no-fund
 
-      - name: Compilar e publicar orbi
+      - name: Configurar repositorio
+        run: npm run prepare:release
+
+      - name: Gerar instalador
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
         run: npx electron-builder --win nsis --publish always
+
+      - name: Publicar arquivos de atualizacao
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: |
+            release/*.exe
+            release/*.blockmap
+            release/latest.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
