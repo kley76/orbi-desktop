@@ -27,7 +27,16 @@
     "directories": { "output": "release" },
     "files": ["src/**/*", "assets/**/*", "package.json"],
     "asar": true,
-    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }] },
+
+"win": {
+  "icon": "assets/icon.ico",
+  "target": [
+    {
+      "target": "nsis",
+      "arch": ["x64"]
+    }
+  ]
+},
     "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "shortcutName": "orbi", "deleteAppDataOnUninstall": false },
     "publish": [{ "provider": "github", "owner": "kley76", "repo": "orbi-desktop", "releaseType": "release" }]
   }
