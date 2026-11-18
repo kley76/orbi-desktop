@@ -28,6 +28,12 @@ jobs:
       - name: Configurar repositorio
         run: npm run prepare:release
 
+      - name: Instalar Pillow
+        run: python -m pip install Pillow
+
+      - name: Gerar icones do orbi
+        run: python scripts/generate-icons.py
+
       - name: Gerar instalador
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
