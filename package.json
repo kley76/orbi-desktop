@@ -1,7 +1,7 @@
 {
   "name": "orbi-desktop",
   "productName": "orbi",
-  "version": "0.1.0",
+  "version": "0.1.1"
   "description": "orbi — assistente de desktop com interface minimalista",
   "main": "src/main.cjs",
   "author": "orbi",
