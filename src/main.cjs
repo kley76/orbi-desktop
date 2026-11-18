@@ -50,7 +50,9 @@ function makePanel() {
 }
 function togglePanel() { if (!panel) return; if (panel.isVisible()) panel.hide(); else {panel.show(); panel.focus();} }
 function makeTray() {
-  const img = nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABFUlEQVQ4T6WTsQ3CMAxFfwdgA1gCNgAJkAGyARtAEtgARqABG8AGbAA3gBFgA0yACWABctyJRCoFSiR09p3vz7L/ynhKpZz0L4BtZB+hXQLkYkUD4EsAJuAbmHAE4AzsAs8JMB0BnoAz4BlYBI6Aw0AGYNpAm8EzgDKTCw8FV+DUd/5rSLTsARwCLwFz7d0FgAO4A7wABgM7gzWD8AC5HgxWO8BZKBEWHSTIIyTwNaOBM0DuD7ajux5QKZ0SKEfPPOMPUJtZNgsBzsCg9Z5tnwB4EYQMGYuVm4HuDKnR4RxhKLQeOziYvgektQDPtFWMxltH+9qfq+glb/WdMMrQAtgUPEmkWcLP6OCvIi1ItCa1OxMi1z8I/KFHJqmiBH3YNOoAAAAASUVORK5CYII=');
+  
+const img = nativeImage.createFromPath(
+  path.join(__dirname, '..', 'assets', 'tray.png')
   tray = new Tray(img);
   tray.setToolTip('orbi');
   tray.setContextMenu(Menu.buildFromTemplate([
