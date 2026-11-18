@@ -1,0 +1,1 @@
+document.querySelector('#dock').onclick=()=>window.orbi.toggle();function tick(){document.querySelector('#clock').textContent=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});}tick();setInterval(tick,10000);

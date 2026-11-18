@@ -1,0 +1,34 @@
+{
+  "name": "orbi-desktop",
+  "productName": "orbi",
+  "version": "0.1.0",
+  "description": "orbi — assistente de desktop com interface minimalista",
+  "main": "src/main.cjs",
+  "author": "orbi",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "prepare:release": "node scripts/configure-release.cjs",
+    "dist:win": "electron-builder --win nsis --x64",
+    "release:win": "electron-builder --win nsis --x64 --publish always"
+  },
+  "dependencies": {
+    "electron-updater": "^6.6.2"
+  },
+  "devDependencies": {
+    "electron": "^35.7.5",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "app.orbi.desktop",
+    "productName": "orbi",
+    "artifactName": "orbi-Setup-${version}.${ext}",
+    "directories": { "output": "release" },
+    "files": ["src/**/*", "assets/**/*", "package.json"],
+    "asar": true,
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }] },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "shortcutName": "orbi", "deleteAppDataOnUninstall": false },
+    "publish": [{ "provider": "github", "owner": "SEU_USUARIO", "repo": "orbi-desktop", "releaseType": "release" }]
+  }
+}
